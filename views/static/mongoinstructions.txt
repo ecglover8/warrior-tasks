@@ -1,0 +1,17 @@
+to start Mongo:
+$ sudo apt-get install -y mongodb-org
+$ mongod --smallfiles
+
+to remove lock file:
+$ sudo rm /data/db/mongod.lock
+$ mongod --smallfiles
+
+to stop an old mongodb that is running:
+$ killall mongod
+$ mongod --smallfiles
+
+to enter mongo shell:
+$ mongo
+
+to upload JSON array from terminal:
+$ mongoimport --db database --collection collection --file filename.json --jsonArray

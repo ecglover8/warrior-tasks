@@ -1,0 +1,6 @@
+<% include header %>
+  <p class="top"><%= top %></p>
+  <% data.forEach( (data) => { %>
+  <a class="t" href="/warrior/<%= data.number %>"><%= data.task %><br /><br /><%= data.number %></a>
+  <% }) %>
+<% include footer %>

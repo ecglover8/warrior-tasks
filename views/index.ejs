@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/stylesheet.css" />
+    <meta name="description" content="warrior task API">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Army Warrior Tasks</title>
+  </head>
+  <header>
+    <p style="text-align:center"><a class="title" href="/">ARMY WARRIOR TASKS</a></p>
+    <p class="description">An online repository for quickly finding and accessing all Army common tasks IAW SMCT 21-1-SMCT. Here you can find all tasks by number, conditions and standards for each task, and performance measures and steps for each task. All results are available as JSON data or via a web-based application. Below are a search bar to find tasks by task keyword search and a clickable list the the ten most recent searches, and below that is a list of all currently available methods for using the application. Thank you.</p>
+    <form id="search" method="post">
+      <input id="sq" name="searchquery" placeholder="Search" size="15" type="text" /><input formaction="/search" id="sb" type="submit" value="" />
+    </form>
+    <div id="terms">
+      <p class="description" style="text-align:center">The last ten searches were:</p>
+      <% terms.forEach( (term) => { %>
+      <a class="term" href="/search/<%= term.searchstring %>"><%= term.searchstring %></a>
+      <% }) %>
+    </div>
+  </header>
+  <body>
+    <p class="method">Last updated: 2018-02-25.</p>
+    <h1>JSON METHODS</h1>
+    <a class="methhead" href="/json/all">https://warrior-tasks-ecglover8.c9users.io/json/all</a>
+    <p class="method">Returns a list of all common tasks and their numbers. The response is an array of objects, where each object contains a task key-value and a number key-value.</p>
+    <a class="methhead" href="/json/proponent/071">https://warrior-tasks-ecglover8.c9users.io/json/proponent/{number}</a>
+    <p class="method">Returns a list of all common tasks and their numbers, by responsible agency. The number must correspond to the appropriate agency code of the command. For example, 071 is the code for the Infantry School. The response is an array of objects, where each object contains a task key-value and a number key-value.</p>
+    <a class="methhead" href="/json/subject/4">https://warrior-tasks-ecglover8.c9users.io/json/subject/{number}</a>
+    <p class="method">Returns a list of all common tasks and their numbers, by subject area. There are five subject areas, and only the numbers 1 through 5 will return a successful response. For example, subject area 4 is Communicate. The response is an array of objects, where each object contains a task key-value and a number key-value.</p>
+    <a class="methhead" href="/json/battledrill/react-to-ambush-far">https://warrior-tasks-ecglover8.c9users.io/json/battledrill/{number or text}</a>
+    <p class="method">Returns a list of all common tasks and their numbers, by battle drill. There are five battle drills. Either the battle drill number (1 through 5) or the name (all lowercase, with hyphens between words) may be used. For example, battle drill 5 is React to Ambush Far. The response is an array of objects, where each object contains a task key-value and a number key-value.</p>
+    <a class="methhead" href="/json/071-COM-0513">https://warrior-tasks-ecglover8.c9users.io/{tasknumber}</a>
+    <p class="method">Returns the task corresponding to the requested number. Each task number has three digits (for proponent), followed by a dash and three letters, followed by a dash and four digits. Request must match this format exactly. For example, task number 071-COM-0513 is Select Hasty Fighting Positions. The response is a JSON with a task key-value.</p>
+    <a class="methhead" href="/json/081-COM-1001/tcs">https://warrior-tasks-ecglover8.c9users.io/{tasknumber}/tcs</a>
+    <p class="method">Returns the task, conditions, and standards corresponding to the requested number. Each task number has three digits (for proponent), followed by a dash and three letters, followed by a dash and four digits. Request must match this format exactly. For example, task number 081-COM-1001 is Evaluate a Casualty. The response is a JSON with key-value pairs of task, conditions, and standards.</p>
+    <a class="methhead" href="/json/071-COM-1004/measures">https://warrior-tasks-ecglover8.c9users.io/{tasknumber}/measures</a>
+    <p class="method">Returns the performance measures corresponding to the requested number. Each task number has three digits (for proponent), followed by a dash and three letters, followed by a dash and four digits. Request must match this format exactly. For example, task number 071-COM-1004 is Perform Duty as a Guard. The response is an array where the zeroth element is an object of the task key-value pair. Each subsequent element of the array is a performance measure for the task. Performance measures do not include substeps.</p>
+    <a class="methhead" href="/json/031-COM-1001/full">https://warrior-tasks-ecglover8.c9users.io/{tasknumber}/full</a>
+    <p class="method">Returns the task, conditions, and standards corresponding to the requested number. Each task number has three digits (for proponent), followed by a dash and three letters, followed by a dash and four digits. Request must match this format exactly. For example, task number 031-COM-1001 is React to Nuclear Attack. The response is an array where the zeroth element is an object of the task key-value pair. Each subsequent element of the array is a performance step or substep for the task. All substeps are included, but any notes and figures are not included.</p>
+    <h1>WEB APPLICATION METHODS</h1>
+    <a class="methhead" href="/warrior">https://warrior-tasks-ecglover8.c9users.io/warrior</a>
+    <p class="method">Returns a page showing all common tasks and their numbers.</p>
+    <a class="methhead" href="/warrior/proponent/113">https://warrior-tasks-ecglover8.c9users.io/warrior/proponent/{number}</a>
+    <p class="method">Returns a page showing all common tasks and their numbers, by responsible agency. The number must correspond to the appropriate agency code of the command. For example, 113 is the code for the Signal Center & School.</p>
+    <a class="methhead" href="/warrior/subject/2">https://warrior-tasks-ecglover8.c9users.io/warrior/subject/{number}</a>
+    <p class="method">Returns a page showing all common tasks and their numbers, by subject area. There are five subject areas, and only the numbers 1 through 5 will return a successful response. For example, subject area 2 is Shoot/Employ Hand Grenades.</p>
+    <a class="methhead" href="/warrior/battledrill/1">https://warrior-tasks-ecglover8.c9users.io/warrior/battledrill/{number or text}</a>
+    <p class="method">Returns a page showing all common tasks and their numbers, by battle drill. There are five battle drills. Either the battle drill number (1 through 5) or the name (all lowercase, with hyphens between words) may be used. For example, battle drill 1 is React to Contact.</p>
+    <a class="methhead" href="/warrior/191-COM-0009">https://warrior-tasks-ecglover8.c9users.io/warrior/{tasknumber}</a>
+    <p class="method">Returns a page showing the task corresponding to the requested number. For example, task number 191-COM-0009 is Search a Detainee.</p>
+<% include footer %>

@@ -1,0 +1,40 @@
+<% include header %>
+  <div id="full">
+    <% data.forEach( (data) => { %>
+    <p class="fulltask">TASK: <%= data.task %></p>
+    <p class="fulltask">CONDITIONS: <%= data.conditions %></p>
+    <p class="fulltask">STANDARDS: <%= data.standards %></p>
+    <% for (var i = 0; i < data.steps.length; i++) { %>
+    <p class="fullsteps" style="border-top: 2px solid #0D0D0D;padding-left:25px"><%= (i+1) %>. <%= data.steps[i][0] %></p>
+      <% if (data.steps[i].length > 1) { %>
+        <% for (var j = 1; j < data.steps[i].length; j++) { %>
+          <% let1 = String.fromCharCode(j+96) %>
+          <% if (Array.isArray(data.steps[i][j])) { %>
+            <p class="fullsteps" style="padding-left:40px"><%= (i+1) + let1 %>. <%= data.steps[i][j][0] %></p>
+            <% for (var k = 1; k < data.steps[i][j].length; k++) { %>
+              <% if (Array.isArray(data.steps[i][j][k])) { %>
+                <p class="fullsteps" style="padding-left:55px"><%= (i+1) + let1 %>(<%= k %>). <%= data.steps[i][j][k][0] %></p>
+                <% for (var l = 1; l < data.steps[i][j][k].length; l++) { %>
+                  <% let2 = String.fromCharCode(l+96) %>
+                  <% if (Array.isArray(data.steps[i][j][k][l])) { %>
+                    <p class="fullsteps" style="padding-left:70px"><%= (i+1) + let1 %>(<%= k %>)(<%= let2 %>). <%= data.steps[i][j][k][l][0] %></p>
+                    <% for (var m = 1; m < data.steps[i][j][k][l].length; m++) { %>
+                      <p class="fullsteps" style="padding-left:85px"><%= (i+1) + let1 %>(<%= k %>)(<%= let2 %>)(<%= m %>. <%= data.steps[i][j][k][l][m] %>
+                    <% } %>
+                  <% } else { %>
+                    <p class="fullsteps" style="padding-left:70px"><%= (i+1) + let1 %>(<%= k %>)(<%= let2 %>). <%= data.steps[i][j][k][l] %></p>
+                  <% } %>
+                <% } %>
+              <% } else { %>
+                <p class="fullsteps" style="padding-left:55px"><%= (i+1) + let1 %>(<%= k %>). <%= data.steps[i][j][k] %>
+              <% } %>
+            <% } %>
+          <% } else { %>
+            <p class="fullsteps" style="padding-left:40px"><%= (i+1) + let1 %>. <%= data.steps[i][j] %></p>
+          <% } %>
+        <% } %>
+      <% } %>
+    <% } %>
+    <% }) %>
+    </div>
+<% include footer %>
