@@ -143,6 +143,7 @@ h1 {
     background-repeat: no-repeat;
     border: none;
     padding: 4px 20px 2px 20px;
+    vertical-align: bottom;
 }
 #sb:hover {
     background-color: #C9C9C9;
@@ -150,6 +151,7 @@ h1 {
 #search {
     font-size: 0.7em;
     padding: 5px 10px;
+    position: relative;
     text-align: center;
 }
 #sq {
@@ -159,6 +161,7 @@ h1 {
     font-size: 1.5em;
     font-style: italic;
     padding: 4px 25px 2px 5px;
+    vertical-align: bottom;
 }
 #terms {
     text-align: center;
